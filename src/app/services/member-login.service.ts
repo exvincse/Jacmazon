@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginMdeol, result } from '../interfaces/login-detail';
+import { LoginMdeol } from '../interfaces/login-detail';
 
 const apiUrl = environment.apiUrl;
 //const apiKey = environment.apiKey;

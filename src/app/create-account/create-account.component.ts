@@ -1,6 +1,5 @@
 import { NgFor, NgIf, CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, inject, OnInit } from '@angular/core';
-import { Item } from '../item';
+import { Component, Input, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginMdeol } from '../interfaces/login-detail';
 import { MemberLoginService } from '../services/member-login.service';
