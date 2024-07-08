@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { CreateAccountComponent } from '../create-account/create-account.component';
 import { AppRoutes } from '../app.routes';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,6 +23,7 @@ import { AppRoutes } from '../app.routes';
 })
 export class SignInComponent implements OnInit, AfterViewInit {
   private loginService = inject(MemberLoginService);
+
   errorMessage: string = '';
   AppRoutes = AppRoutes;
 
@@ -46,8 +48,11 @@ export class SignInComponent implements OnInit, AfterViewInit {
 
   onSubmit(formData: LoginMdeol) {
     this.loginService.Login(formData).subscribe({
-      next: (res: string) => {
-        localStorage.setItem('jwtToken', res); // Store token in localStorage
+      next: (response: any) => {
+        var res = JSON.parse(response);
+
+        localStorage.setItem('accessToken', res.data.accessToken);
+        localStorage.setItem('refreshToken', res.data.refreshToken);
         this.router.navigate(['/']);
       },
       error: (error: HttpErrorResponse) => {
